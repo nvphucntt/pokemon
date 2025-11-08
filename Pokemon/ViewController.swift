@@ -6,24 +6,72 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
+
+enum Status {
+    case home
+    case qr1
+    case qr2
+}
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var timeLabel: UILabel!
-    var countdownTimer: Timer?
-    var remainingSeconds: Int = 5 * 60
+    @IBOutlet weak var bg_imgView: UIImageView!
+    
+    @IBOutlet weak var downLoadButton: UIButton!
+    
+    @IBOutlet weak var couponButton: UIButton!
+    
+    var statusHome: Status = .home
+    
+    var activityIndicator: NVActivityIndicatorView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        updateLabel()
-        startCountdown()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        if DataStore.shared.isComplete {
+            self.bg_imgView.image = UIImage(named: "img_6")
+            self.showLoadingView()
+        } else {
+            self.bg_imgView.image = UIImage(named: "img_1")
+        }
+    }
+    
+    func showLoadingView() {
+        let frame = CGRect(x: 0, y: 0, width: 35, height: 35)
+        activityIndicator = NVActivityIndicatorView(frame: frame,
+                                                    type: .ballSpinFadeLoader, // kiểu gần giống hình bạn
+                                                    color: .red,
+                                                    padding: 0)
+        
+        activityIndicator.center = view.center
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.activityIndicator.stopAnimating()
+        }
+    }
+    
+    func configUI() {
+        switch self.statusHome {
+        case .home:
+            self.downLoadButton.isHidden = true
+            self.couponButton.isHidden = true
+        case .qr1:
+            self.downLoadButton.isHidden = false
+            self.couponButton.isHidden = true
+        case .qr2:
+            self.downLoadButton.isHidden = true
+            self.couponButton.isHidden = false
+        }
     }
     
     @IBAction func didTappedCancelButton(_ sender: Any)
@@ -32,31 +80,54 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(homeVC, animated: false)
     }
     
-    func startCountdown() {
-        countdownTimer = Timer.scheduledTimer(timeInterval: 1.0,
-                                              target: self,
-                                              selector: #selector(updateCountdown),
-                                              userInfo: nil,
-                                              repeats: true)
+    @IBAction func didTappedHomeButton(_ sender: Any) {
+        self.bg_imgView.image = UIImage(named: "img_1")
+        self.statusHome = .home
+        configUI()
     }
     
-    @objc func updateCountdown() {
-        if remainingSeconds > 0 {
-            remainingSeconds -= 1
-            updateLabel()
-        } else {
-            countdownTimer?.invalidate()
-            timeLabel.text = "00:00:00"
-            print("⏰ Countdown finished!")
+    @IBAction func didTappedQrButton(_ sender: Any) {
+        self.statusHome = .qr1
+        self.bg_imgView.image = UIImage(named: "img_2")
+        configUI()
+    }
+    
+    @IBAction func didTappedDownloadButton(_ sender: Any) {
+        self.statusHome = .qr2
+        configUI()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.bg_imgView.image = UIImage(named: "img_3")
         }
     }
     
-    func updateLabel() {
-        let hours = remainingSeconds / 3600
-        let minutes = (remainingSeconds % 3600) / 60
-        let seconds = remainingSeconds % 60
+    @IBAction func didTappedShowCoupon(_ sender: Any) {
+        configUI()
+        showCouponAlert(on: self)
+    }
+    
+    func showCouponAlert(on viewController: UIViewController) {
+        let title = "クーポンを利用しますか"
         
-        timeLabel.text = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+        let message = """
+        クーポンには当日まで有効なもの、制限時間内のみ有効なものがありますのでご注意ください。「利用する」を押下すると、もとに戻すことはできません。
+        """
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let useAction = UIAlertAction(title: "利用する（元には戻せません）", style: .default) { _ in
+            
+            let homeVC = HomeViewController()
+            self.navigationController?.pushViewController(homeVC, animated: false)
+        }
+        
+        let cancelAction = UIAlertAction(title: "キャンセル）", style: .default) { _ in
+            self.dismiss(animated: true)
+        }
+        
+        alert.addAction(useAction)
+        alert.addAction(cancelAction)
+        
+        viewController.present(alert, animated: true, completion: nil)
     }
 }
 
