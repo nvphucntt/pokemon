@@ -14,43 +14,49 @@ class DataStore {
     
     func isAfter9PMTomorrowInJapan() -> Bool {
         let calendar = Calendar.current
-        let now = Date()
-        
-        guard let japanTimeZone = TimeZone(identifier: "Asia/Tokyo") else {
-            return false
-        }
-        
-        var tomorrowComponents = calendar.dateComponents(in: japanTimeZone, from: now)
-        tomorrowComponents.day! += 1
-        tomorrowComponents.hour = 21
-        tomorrowComponents.minute = 0
-        tomorrowComponents.second = 0
-        
-        guard let ninePMTomorrow = calendar.date(from: tomorrowComponents) else {
-            return false
-        }
-        
-        return now > ninePMTomorrow
+            let now = Date()
+            
+            guard let japanTimeZone = TimeZone(identifier: "Asia/Tokyo") else {
+                return false
+            }
+            
+            var components = DateComponents()
+            components.year = 2025
+            components.month = 11
+            components.day = 9
+            components.hour = 21
+            components.minute = 0
+            components.second = 0
+            components.timeZone = japanTimeZone
+            
+            guard let targetDate = calendar.date(from: components) else {
+                return false
+            }
+            
+            return now > targetDate
     }
     
     func isAfter19hInVN() -> Bool {
         let calendar = Calendar.current
-        let now = Date()
-        
-        guard let japanTimeZone = TimeZone(identifier: "Asia/Tokyo") else {
-            return false
-        }
-        
-        var tomorrowComponents = calendar.dateComponents(in: japanTimeZone, from: now)
-        tomorrowComponents.day! += 1
-        tomorrowComponents.hour = 19
-        tomorrowComponents.minute = 0
-        tomorrowComponents.second = 0
-        
-        guard let ninePMTomorrow = calendar.date(from: tomorrowComponents) else {
-            return false
-        }
-        
-        return now > ninePMTomorrow
+            let now = Date()
+            
+            guard let vnTimeZone = TimeZone(identifier: "Asia/Ho_Chi_Minh") else {
+                return false
+            }
+            
+            var components = DateComponents()
+            components.year = 2025
+            components.month = 11
+            components.day = 9
+            components.hour = 19
+            components.minute = 0
+            components.second = 0
+            components.timeZone = vnTimeZone
+            
+            guard let targetDate = calendar.date(from: components) else {
+                return false
+            }
+            
+            return now > targetDate
     }
 }

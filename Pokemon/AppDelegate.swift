@@ -17,6 +17,7 @@ enum IPhoneScreenType {
     case pro_14Pro_15Pro   // 2556 - iPhone 14 Pro, 15 Pro
     case proMax_14ProMax   // 2778 - iPhone 14 Pro Max
     case proMax_15ProMax   // 2796 - iPhone 15 Pro Max
+    case large_xsmax_11ProMax //2688 - iphone XS max
     case other
 }
 
@@ -60,7 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
             case .other:
                 print("👉 Loại khác hoặc simulator")
-            }
+            case .large_xsmax_11ProMax:
+            print("👉 Màn hình Pro Max (iPhone xsmax_11ProMax)")
+        }
         
         return true
     }
@@ -106,6 +109,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         case 2556:
             return .pro_14Pro_15Pro
+            
+        case 2688:
+                return .large_xsmax_11ProMax
             
         case 2778:
             return .proMax_14ProMax

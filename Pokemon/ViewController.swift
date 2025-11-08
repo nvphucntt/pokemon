@@ -101,7 +101,7 @@ class ViewController: UIViewController {
     @IBAction func didTappedDownloadButton(_ sender: Any) {
         self.statusHome = .qr2
         configUI()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
             self.bg_imgView.image = UIImage(named: "img_3")
         }
     }
@@ -120,13 +120,13 @@ class ViewController: UIViewController {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let useAction = UIAlertAction(title: "利用する（元には戻せません）", style: .default) { _ in
+        let useAction = UIAlertAction(title: "利用する（元には戻せません)", style: .default) { _ in
             
             let homeVC = HomeViewController()
             self.navigationController?.pushViewController(homeVC, animated: false)
         }
         
-        let cancelAction = UIAlertAction(title: "キャンセル）", style: .default) { _ in
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { _ in
             self.dismiss(animated: true)
         }
         
