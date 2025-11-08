@@ -22,6 +22,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var couponButton: UIButton!
     
+    
+    @IBOutlet weak var isValidView: UIView!
+    
     var statusHome: Status = .home
     
     var activityIndicator: NVActivityIndicatorView!
@@ -35,6 +38,9 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.isValidView.isHidden = !DataStore.shared.isAfter9PMTomorrowInJapan()
+        self.isValidView.isHidden = !DataStore.shared.isAfter19hInVN()
+        
         if DataStore.shared.isComplete {
             self.bg_imgView.image = UIImage(named: "img_6")
             self.showLoadingView()
@@ -46,7 +52,7 @@ class ViewController: UIViewController {
     func showLoadingView() {
         let frame = CGRect(x: 0, y: 0, width: 35, height: 35)
         activityIndicator = NVActivityIndicatorView(frame: frame,
-                                                    type: .ballSpinFadeLoader, // kiểu gần giống hình bạn
+                                                    type: .ballSpinFadeLoader,
                                                     color: .red,
                                                     padding: 0)
         

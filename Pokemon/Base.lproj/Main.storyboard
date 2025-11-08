@@ -80,6 +80,10 @@
                                     <action selector="didTappedHomeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9LF-02-Xfe"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Cu-bh-pRd">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -90,16 +94,20 @@
                             <constraint firstItem="nqA-9R-xU0" firstAttribute="top" secondItem="5yv-5I-3ZK" secondAttribute="bottom" constant="120" id="RqG-rq-fh7"/>
                             <constraint firstItem="F8M-A2-dKW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Srd-s2-qVn"/>
                             <constraint firstItem="Ka8-Iw-88F" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="TWz-Rd-G1t"/>
+                            <constraint firstItem="3Cu-bh-pRd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="WRI-ag-9ve"/>
+                            <constraint firstAttribute="bottom" secondItem="3Cu-bh-pRd" secondAttribute="bottom" id="WvY-CS-q6n"/>
                             <constraint firstAttribute="bottom" secondItem="F8M-A2-dKW" secondAttribute="bottom" id="XIf-le-e2u"/>
                             <constraint firstItem="utB-hr-LBw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="aLx-gf-QqO"/>
                             <constraint firstItem="Ka8-Iw-88F" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aOa-R6-hTy"/>
                             <constraint firstItem="Oc7-hg-Pg5" firstAttribute="top" secondItem="QuN-vc-yXv" secondAttribute="bottom" constant="20" id="d8W-br-44a"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F8M-A2-dKW" secondAttribute="trailing" id="dhA-tU-4lq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QuN-vc-yXv" secondAttribute="trailing" id="djF-zP-tBF"/>
+                            <constraint firstItem="3Cu-bh-pRd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="g7l-4e-K5A"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nqA-9R-xU0" secondAttribute="trailing" id="h4u-Lh-zn2"/>
                             <constraint firstItem="F8M-A2-dKW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hbr-B9-jH4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Oc7-hg-Pg5" secondAttribute="bottom" id="jZl-xK-tZk"/>
                             <constraint firstItem="utB-hr-LBw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jhn-fF-N02"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3Cu-bh-pRd" secondAttribute="trailing" id="jrd-ZS-u9F"/>
                             <constraint firstItem="QuN-vc-yXv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pDn-w6-xqw"/>
                             <constraint firstItem="5yv-5I-3ZK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="vLA-Ff-w1O"/>
                         </constraints>
@@ -109,6 +117,7 @@
                         <outlet property="bg_imgView" destination="F8M-A2-dKW" id="qrn-nA-xKB"/>
                         <outlet property="couponButton" destination="QuN-vc-yXv" id="h08-LU-cMc"/>
                         <outlet property="downLoadButton" destination="nqA-9R-xU0" id="oyb-OX-R4t"/>
+                        <outlet property="isValidView" destination="3Cu-bh-pRd" id="v1i-HF-Lgi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

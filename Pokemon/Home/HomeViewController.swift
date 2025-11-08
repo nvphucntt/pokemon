@@ -52,6 +52,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func didTappedCancelButton(_ sender: Any) {
+        DataStore.shared.isComplete = true
         self.navigationController?.popViewController(animated: false)
     }
     
