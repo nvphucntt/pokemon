@@ -95,8 +95,8 @@ class HomeViewController: UIViewController {
             heightConstraint.constant = 34
             self.timeLabel.font = UIFont.boldSystemFont(ofSize: 30)
         case .proMax_15ProMax:
-            trailingConstraint.constant = 114
-            bottomConstraint.constant = 268
+            trailingConstraint.constant = 106
+            bottomConstraint.constant = 257
             widthConstraint.constant = 140
             heightConstraint.constant = 34
             self.timeLabel.font = UIFont.boldSystemFont(ofSize: 30)

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Svq-v1-3I5">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -37,17 +38,6 @@
                                     <action selector="didTappedCancelButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Lc-dh-lQD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ka8-Iw-88F" userLabel="Qr home">
-                                <rect key="frame" x="160" y="750" width="70" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="4IJ-qd-e8y"/>
-                                    <constraint firstAttribute="height" constant="60" id="m7f-S1-aDo"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <connections>
-                                    <action selector="didTappedQrButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fed-N2-91g"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqA-9R-xU0" userLabel="downlod">
                                 <rect key="frame" x="290" y="270" width="100" height="120"/>
                                 <constraints>
@@ -60,26 +50,62 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuN-vc-yXv" userLabel="coupon">
-                                <rect key="frame" x="0.0" y="690" width="390" height="40"/>
+                                <rect key="frame" x="0.0" y="685" width="390" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="G07-nM-vmS"/>
+                                    <constraint firstAttribute="height" constant="50" id="G07-nM-vmS"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <connections>
                                     <action selector="didTappedShowCoupon:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ePM-av-VZp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oc7-hg-Pg5" userLabel="home">
-                                <rect key="frame" x="0.0" y="750" width="70" height="60"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hxf-Ox-Mdn">
+                                <rect key="frame" x="0.0" y="750" width="390" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oc7-hg-Pg5" userLabel="home">
+                                        <rect key="frame" x="0.0" y="0.0" width="78" height="60"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="didTappedHomeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9LF-02-Xfe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEo-Td-9CN" userLabel="home 2">
+                                        <rect key="frame" x="79" y="0.0" width="78" height="60"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="didTappedHome2Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="68t-JE-Mkc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ka8-Iw-88F" userLabel="Qr home">
+                                        <rect key="frame" x="158" y="0.0" width="78" height="60"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="didTappedQrButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fed-N2-91g"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qy4-cS-cii" userLabel="home 4">
+                                        <rect key="frame" x="237" y="0.0" width="78" height="60"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="didTappedHome4Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YZb-bN-6W2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbu-Sv-uYK" userLabel="home 5">
+                                        <rect key="frame" x="316" y="0.0" width="74" height="60"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="didTappedHome5Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DfO-Y3-2oT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="5qg-wq-gYI"/>
-                                    <constraint firstAttribute="width" constant="70" id="Nma-GQ-hr4"/>
+                                    <constraint firstAttribute="height" constant="60" id="4O1-Q8-LbH"/>
+                                    <constraint firstItem="Ka8-Iw-88F" firstAttribute="width" secondItem="Oc7-hg-Pg5" secondAttribute="width" id="HKu-Sn-O0b"/>
+                                    <constraint firstItem="Qy4-cS-cii" firstAttribute="width" secondItem="Oc7-hg-Pg5" secondAttribute="width" id="T9i-8K-nIq"/>
+                                    <constraint firstItem="Oc7-hg-Pg5" firstAttribute="width" secondItem="Hxf-Ox-Mdn" secondAttribute="width" multiplier="1/5" id="ump-Ws-97R"/>
+                                    <constraint firstItem="iEo-Td-9CN" firstAttribute="width" secondItem="Oc7-hg-Pg5" secondAttribute="width" id="vNq-bN-9G6"/>
                                 </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <connections>
-                                    <action selector="didTappedHomeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9LF-02-Xfe"/>
-                                </connections>
-                            </button>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Cu-bh-pRd">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -88,28 +114,27 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Oc7-hg-Pg5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="41w-Hx-BOW"/>
+                            <constraint firstItem="Hxf-Ox-Mdn" firstAttribute="top" secondItem="QuN-vc-yXv" secondAttribute="bottom" constant="15" id="0VY-yf-Kbv"/>
                             <constraint firstItem="utB-hr-LBw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="5lU-oL-cLl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5yv-5I-3ZK" secondAttribute="trailing" id="CpT-MN-KcL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Hxf-Ox-Mdn" secondAttribute="bottom" id="G3k-JC-Y6Q"/>
+                            <constraint firstItem="Hxf-Ox-Mdn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RGZ-Bk-3Ct"/>
                             <constraint firstItem="nqA-9R-xU0" firstAttribute="top" secondItem="5yv-5I-3ZK" secondAttribute="bottom" constant="120" id="RqG-rq-fh7"/>
                             <constraint firstItem="F8M-A2-dKW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Srd-s2-qVn"/>
-                            <constraint firstItem="Ka8-Iw-88F" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="TWz-Rd-G1t"/>
                             <constraint firstItem="3Cu-bh-pRd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="WRI-ag-9ve"/>
                             <constraint firstAttribute="bottom" secondItem="3Cu-bh-pRd" secondAttribute="bottom" id="WvY-CS-q6n"/>
                             <constraint firstAttribute="bottom" secondItem="F8M-A2-dKW" secondAttribute="bottom" id="XIf-le-e2u"/>
                             <constraint firstItem="utB-hr-LBw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="aLx-gf-QqO"/>
-                            <constraint firstItem="Ka8-Iw-88F" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aOa-R6-hTy"/>
-                            <constraint firstItem="Oc7-hg-Pg5" firstAttribute="top" secondItem="QuN-vc-yXv" secondAttribute="bottom" constant="20" id="d8W-br-44a"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F8M-A2-dKW" secondAttribute="trailing" id="dhA-tU-4lq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QuN-vc-yXv" secondAttribute="trailing" id="djF-zP-tBF"/>
                             <constraint firstItem="3Cu-bh-pRd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="g7l-4e-K5A"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nqA-9R-xU0" secondAttribute="trailing" id="h4u-Lh-zn2"/>
                             <constraint firstItem="F8M-A2-dKW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hbr-B9-jH4"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Oc7-hg-Pg5" secondAttribute="bottom" id="jZl-xK-tZk"/>
                             <constraint firstItem="utB-hr-LBw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jhn-fF-N02"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3Cu-bh-pRd" secondAttribute="trailing" id="jrd-ZS-u9F"/>
                             <constraint firstItem="QuN-vc-yXv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pDn-w6-xqw"/>
                             <constraint firstItem="5yv-5I-3ZK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="vLA-Ff-w1O"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hxf-Ox-Mdn" secondAttribute="trailing" id="ytj-GY-CkI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CF4-31-pWF"/>
@@ -118,6 +143,7 @@
                         <outlet property="couponButton" destination="QuN-vc-yXv" id="h08-LU-cMc"/>
                         <outlet property="downLoadButton" destination="nqA-9R-xU0" id="oyb-OX-R4t"/>
                         <outlet property="isValidView" destination="3Cu-bh-pRd" id="v1i-HF-Lgi"/>
+                        <outlet property="topLineView" destination="utB-hr-LBw" id="C3a-IV-Zb4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

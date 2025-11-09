@@ -12,34 +12,46 @@ enum Status {
     case home
     case qr1
     case qr2
+    case qrDone
+    case home2
+    case home4
+    
 }
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var bg_imgView: UIImageView!
-    
     @IBOutlet weak var downLoadButton: UIButton!
-    
     @IBOutlet weak var couponButton: UIButton!
-    
-    
     @IBOutlet weak var isValidView: UIView!
+    @IBOutlet weak var topLineView: UIView!
     
+    let screenBounds = UIScreen.main.bounds
     var statusHome: Status = .home
-    
     var activityIndicator: NVActivityIndicatorView!
     
+    private var maskView: UIView!
+    private var overlayImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        maskView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 120))
+        maskView.clipsToBounds = true
+        view.addSubview(maskView)
+
+        overlayImageView = UIImageView(frame: screenBounds)
+        overlayImageView.image = UIImage(named: "img_6")
+        overlayImageView.contentMode = .scaleAspectFill
+        maskView.addSubview(overlayImageView)
+        self.view.bringSubviewToFront(self.topLineView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         self.isValidView.isHidden = !DataStore.shared.isAfter9PMTomorrowInJapan()
-        self.isValidView.isHidden = !DataStore.shared.isAfter19hInVN()
+        self.isValidView.isHidden = true
         
         if DataStore.shared.isComplete {
             self.bg_imgView.image = UIImage(named: "img_6")
@@ -71,12 +83,28 @@ class ViewController: UIViewController {
         case .home:
             self.downLoadButton.isHidden = true
             self.couponButton.isHidden = true
+            self.maskView.isHidden = false
+            self.overlayImageView.isHidden = false
+        case .home2, .home4:
+            self.downLoadButton.isHidden = true
+            self.couponButton.isHidden = true
+            self.maskView.isHidden = true
+            self.overlayImageView.isHidden = true
         case .qr1:
             self.downLoadButton.isHidden = false
             self.couponButton.isHidden = true
+            self.maskView.isHidden = true
+            self.overlayImageView.isHidden = true
         case .qr2:
             self.downLoadButton.isHidden = true
             self.couponButton.isHidden = false
+            self.maskView.isHidden = true
+            self.overlayImageView.isHidden = true
+        case .qrDone:
+            self.downLoadButton.isHidden = true
+            self.couponButton.isHidden = true
+            self.maskView.isHidden = true
+            self.overlayImageView.isHidden = true
         }
     }
     
@@ -92,11 +120,45 @@ class ViewController: UIViewController {
         configUI()
     }
     
-    @IBAction func didTappedQrButton(_ sender: Any) {
-        self.statusHome = .qr1
-        self.bg_imgView.image = UIImage(named: "img_2")
+    @IBAction func didTappedHome2Button(_ sender: Any) {
+        self.bg_imgView.image = UIImage(named: "img_8")
+        self.statusHome = .home2
         configUI()
     }
+    
+    
+    @IBAction func didTappedQrButton(_ sender: Any) {
+        if DataStore.shared.isComplete {
+            self.statusHome = .qrDone
+            self.bg_imgView.image = UIImage(named: "img_601")
+        } else {
+            self.statusHome = .qr1
+            self.bg_imgView.image = UIImage(named: "img_2")
+        }
+        configUI()
+    }
+    
+    @IBAction func didTappedHome4Button(_ sender: Any) {
+        self.bg_imgView.image = UIImage(named: "img_7")
+        self.statusHome = .home4
+        configUI()
+    }
+    
+    @IBAction func didTappedHome5Button(_ sender: Any) {
+        if let url = URL(string: "https://auth.7id.omni7.jp/login-id/input?appid=bpc&userhash=GZKS74DFBQP6VCNTDWUWAER732PBZGPIV2AGS6I&ts=1762610319&tn=1762610319342GZKS74DFBQP6VCNTDWUWAER732PBZGPIV2AGS6I990&sig=2333f9b4d35c95909b17bfdb9827bee74a0a56de&ksappcd=03&ksappsitecd=0003&r_url=&utmparam=utm_campaign%3Diy_7mp%26utm_medium%3Dapp%26utm_source%3Dapp_iy") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+        
+        if DataStore.shared.isComplete {
+            self.bg_imgView.image = UIImage(named: "img_6")
+        } else {
+            self.bg_imgView.image = UIImage(named: "img_1")
+        }
+        self.statusHome = .home
+        configUI()
+        
+    }
+    
     
     @IBAction func didTappedDownloadButton(_ sender: Any) {
         self.statusHome = .qr2
