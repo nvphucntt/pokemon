@@ -27,6 +27,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tabbarImageView: UIImageView!
     
+    @IBOutlet weak var downloadButton: UIButton!
+    @IBOutlet weak var qrButton: UIButton!
+    @IBOutlet weak var numberQRImageView: UIImageView!
+    
+    @IBOutlet weak var firstTab3ImageView: UIImageView!
     
     @IBOutlet weak var isValidView: UIView!
     @IBOutlet weak var topLineView: UIView!
@@ -34,7 +39,10 @@ class ViewController: UIViewController {
     let screenBounds = UIScreen.main.bounds
     var statusHome: Status = .home
     var activityIndicator: NVActivityIndicatorView!
+    var isExpandHome2: Bool = false
     
+    @IBOutlet weak var tab2CollapseView: UIImageView!
+    @IBOutlet weak var tab2ExpandView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,11 +54,17 @@ class ViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         self.isValidView.isHidden = !DataStore.shared.isAfter9PMTomorrowInJapan()
         self.isValidView.isHidden = true
-        
+        self.statusHome = .home
         if DataStore.shared.isComplete {
             self.showLoadingView()
+            
         } else {
+            
         }
+        self.configUI()
+        self.numberQRImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        numberQRImageView.layer.cornerRadius = 30
+        numberQRImageView.clipsToBounds = true
     }
     
     func showLoadingView() {
@@ -59,18 +73,20 @@ class ViewController: UIViewController {
                                                     type: .ballSpinFadeLoader,
                                                     color: .red,
                                                     padding: 0)
-        
+        self.activityIndicator.stopAnimating()
         activityIndicator.center = view.center
         view.addSubview(activityIndicator)
         
         activityIndicator.startAnimating()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.activityIndicator.stopAnimating()
         }
     }
     
     func configUI() {
+        self.isExpandHome2 = false
+        
         switch self.statusHome {
         case .home:
             tab01.isHidden = false
@@ -90,12 +106,25 @@ class ViewController: UIViewController {
             tab03.isHidden = false
             tab04.isHidden = true
             tabbarImageView.image = UIImage(named: "tab_home_03")
+            
+            downloadButton.isUserInteractionEnabled = true
+            qrButton.isUserInteractionEnabled = false
+            qrButton.backgroundColor = UIColor.color(rgb: 0xD8D8D8)
+            numberQRImageView.image = UIImage(named: "tab3_button_04")
+            self.firstTab3ImageView.image = UIImage(named: "tab3_01")
+            
         case .qr2:
             tab01.isHidden = true
             tab02.isHidden = true
             tab03.isHidden = false
             tab04.isHidden = true
             tabbarImageView.image = UIImage(named: "tab_home_03")
+            
+            downloadButton.isUserInteractionEnabled = false
+            qrButton.isUserInteractionEnabled = true
+            qrButton.backgroundColor = UIColor.color(rgb: 0xE60012)
+            numberQRImageView.image = UIImage(named: "tab3_button_03")
+            self.firstTab3ImageView.image = UIImage(named: "tab3_011")
         case .home4:
             tab01.isHidden = true
             tab02.isHidden = true
@@ -103,18 +132,18 @@ class ViewController: UIViewController {
             tab04.isHidden = false
             tabbarImageView.image = UIImage(named: "tab_home_04")
         case .qrDone:
-            tab01.isHidden = false
+            tab01.isHidden = true
             tab02.isHidden = true
-            tab03.isHidden = true
+            tab03.isHidden = false
             tab04.isHidden = true
-            tabbarImageView.image = UIImage(named: "tab_home_01")
+            tabbarImageView.image = UIImage(named: "tab_home_03")
+            
+            downloadButton.isUserInteractionEnabled = true
+            qrButton.isUserInteractionEnabled = false
+            qrButton.backgroundColor = UIColor.color(rgb: 0xD8D8D8)
+            numberQRImageView.image = UIImage(named: "tab3_button_04")
+            self.firstTab3ImageView.image = UIImage(named: "tab3_01")
         }
-    }
-    
-    @IBAction func didTappedCancelButton(_ sender: Any)
-    {
-        let homeVC = HomeViewController()
-        navigationController?.pushViewController(homeVC, animated: false)
     }
     
     @IBAction func didTappedHomeButton(_ sender: Any) {
@@ -155,12 +184,25 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func didTappedExpandHome2Button(_ sender: Any) {
+        self.isExpandHome2 = true
+        updateUIHome2()
+    }
+    
+    func updateUIHome2() {
+        if self.isExpandHome2 {
+            tab2ExpandView.isHidden = false
+            tab2CollapseView.isHidden = true
+        } else {
+            tab2ExpandView.isHidden = true
+            tab2CollapseView.isHidden = false
+        }
+    }
     
     @IBAction func didTappedDownloadButton(_ sender: Any) {
         self.statusHome = .qr2
-        configUI()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-//            self.bg_imgView.image = UIImage(named: "img_3")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.configUI()
         }
     }
     
