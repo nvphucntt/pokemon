@@ -20,9 +20,14 @@ enum Status {
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var bg_imgView: UIImageView!
-    @IBOutlet weak var downLoadButton: UIButton!
-    @IBOutlet weak var couponButton: UIButton!
+    @IBOutlet weak var tab01: UIView!
+    @IBOutlet weak var tab02: UIView!
+    @IBOutlet weak var tab03: UIView!
+    @IBOutlet weak var tab04: UIView!
+    
+    @IBOutlet weak var tabbarImageView: UIImageView!
+    
+    
     @IBOutlet weak var isValidView: UIView!
     @IBOutlet weak var topLineView: UIView!
     
@@ -30,21 +35,10 @@ class ViewController: UIViewController {
     var statusHome: Status = .home
     var activityIndicator: NVActivityIndicatorView!
     
-    private var maskView: UIView!
-    private var overlayImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        maskView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 120))
-        maskView.clipsToBounds = true
-        view.addSubview(maskView)
-
-        overlayImageView = UIImageView(frame: screenBounds)
-        overlayImageView.image = UIImage(named: "img_6")
-        overlayImageView.contentMode = .scaleAspectFill
-        maskView.addSubview(overlayImageView)
-        self.view.bringSubviewToFront(self.topLineView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,10 +48,8 @@ class ViewController: UIViewController {
         self.isValidView.isHidden = true
         
         if DataStore.shared.isComplete {
-            self.bg_imgView.image = UIImage(named: "img_6")
             self.showLoadingView()
         } else {
-            self.bg_imgView.image = UIImage(named: "img_1")
         }
     }
     
@@ -81,30 +73,41 @@ class ViewController: UIViewController {
     func configUI() {
         switch self.statusHome {
         case .home:
-            self.downLoadButton.isHidden = true
-            self.couponButton.isHidden = true
-            self.maskView.isHidden = false
-            self.overlayImageView.isHidden = false
-        case .home2, .home4:
-            self.downLoadButton.isHidden = true
-            self.couponButton.isHidden = true
-            self.maskView.isHidden = true
-            self.overlayImageView.isHidden = true
+            tab01.isHidden = false
+            tab02.isHidden = true
+            tab03.isHidden = true
+            tab04.isHidden = true
+            tabbarImageView.image = UIImage(named: "tab_home_01")
+        case .home2:
+            tab01.isHidden = true
+            tab02.isHidden = false
+            tab03.isHidden = true
+            tab04.isHidden = true
+            tabbarImageView.image = UIImage(named: "tab_home_02")
         case .qr1:
-            self.downLoadButton.isHidden = false
-            self.couponButton.isHidden = true
-            self.maskView.isHidden = true
-            self.overlayImageView.isHidden = true
+            tab01.isHidden = true
+            tab02.isHidden = true
+            tab03.isHidden = false
+            tab04.isHidden = true
+            tabbarImageView.image = UIImage(named: "tab_home_03")
         case .qr2:
-            self.downLoadButton.isHidden = true
-            self.couponButton.isHidden = false
-            self.maskView.isHidden = true
-            self.overlayImageView.isHidden = true
+            tab01.isHidden = true
+            tab02.isHidden = true
+            tab03.isHidden = false
+            tab04.isHidden = true
+            tabbarImageView.image = UIImage(named: "tab_home_03")
+        case .home4:
+            tab01.isHidden = true
+            tab02.isHidden = true
+            tab03.isHidden = true
+            tab04.isHidden = false
+            tabbarImageView.image = UIImage(named: "tab_home_04")
         case .qrDone:
-            self.downLoadButton.isHidden = true
-            self.couponButton.isHidden = true
-            self.maskView.isHidden = true
-            self.overlayImageView.isHidden = true
+            tab01.isHidden = false
+            tab02.isHidden = true
+            tab03.isHidden = true
+            tab04.isHidden = true
+            tabbarImageView.image = UIImage(named: "tab_home_01")
         }
     }
     
@@ -115,13 +118,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTappedHomeButton(_ sender: Any) {
-        self.bg_imgView.image = UIImage(named: "img_1")
         self.statusHome = .home
         configUI()
     }
     
     @IBAction func didTappedHome2Button(_ sender: Any) {
-        self.bg_imgView.image = UIImage(named: "img_8")
         self.statusHome = .home2
         configUI()
     }
@@ -130,16 +131,13 @@ class ViewController: UIViewController {
     @IBAction func didTappedQrButton(_ sender: Any) {
         if DataStore.shared.isComplete {
             self.statusHome = .qrDone
-            self.bg_imgView.image = UIImage(named: "img_601")
         } else {
             self.statusHome = .qr1
-            self.bg_imgView.image = UIImage(named: "img_2")
         }
         configUI()
     }
     
     @IBAction func didTappedHome4Button(_ sender: Any) {
-        self.bg_imgView.image = UIImage(named: "img_7")
         self.statusHome = .home4
         configUI()
     }
@@ -149,11 +147,9 @@ class ViewController: UIViewController {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
         
-        if DataStore.shared.isComplete {
-            self.bg_imgView.image = UIImage(named: "img_6")
-        } else {
-            self.bg_imgView.image = UIImage(named: "img_1")
-        }
+//        if DataStore.shared.isComplete {
+//        } else {
+//        }
         self.statusHome = .home
         configUI()
         
@@ -164,7 +160,7 @@ class ViewController: UIViewController {
         self.statusHome = .qr2
         configUI()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-            self.bg_imgView.image = UIImage(named: "img_3")
+//            self.bg_imgView.image = UIImage(named: "img_3")
         }
     }
     
