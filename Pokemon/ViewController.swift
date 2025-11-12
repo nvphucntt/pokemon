@@ -49,12 +49,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+            view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        if DataStore.shared.checkIfOver24hTokyo() {
+            DataStore.shared.update(isLogin: false)
+        }
         self.isValidView.isHidden = DataStore.shared.isLogin
         self.statusHome = .home
         if DataStore.shared.isComplete {
@@ -67,6 +72,10 @@ class ViewController: UIViewController {
         self.numberQRImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         numberQRImageView.layer.cornerRadius = 32.5
         numberQRImageView.clipsToBounds = true
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func showLoadingView() {
@@ -150,17 +159,19 @@ class ViewController: UIViewController {
     
     @IBAction func didTapeedLogin(_ sender: Any) {
         let password = passwordTextField.text ?? ""
-            let isValid = checkPassword(password, validView: isValidView)
-
-            if isValid {
-                DataStore.shared.isLogin = true
-            } else {
-                DataStore.shared.isLogin = false
-            }
+        let isValid = checkPassword(password, validView: isValidView)
+        if isValid {
+            DataStore.shared.update(lastLoginDate: Date())
+        } else {
+            showWrongPasswordAlert(on: self)
+        }
+        
+        DataStore.shared.update(isLogin: isValid)
     }
     
     func checkPassword(_ password: String, validView: UIView) -> Bool {
-        if password == "12345678" {
+        view.endEditing(true)
+        if password == DataStore.shared.currentPass() {
             validView.isHidden = true
             return true
         } else {
@@ -192,6 +203,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTappedHome4Button(_ sender: Any) {
+        DataStore.shared.update(isLogin: false)
+        DataStore.shared.removeLoginDate()
         self.statusHome = .home4
         configUI()
     }
@@ -256,6 +269,16 @@ class ViewController: UIViewController {
         alert.addAction(cancelAction)
         
         viewController.present(alert, animated: true, completion: nil)
+    }
+    
+    func showWrongPasswordAlert(on viewController: UIViewController) {
+        let alert = UIAlertController(
+            title: "Sai mật khẩu rồi",
+            message: "Nhập lại đi mày 😅",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        viewController.present(alert, animated: true)
     }
 }
 
