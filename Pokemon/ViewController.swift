@@ -63,7 +63,7 @@ class ViewController: UIViewController {
         }
         self.configUI()
         self.numberQRImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        numberQRImageView.layer.cornerRadius = 25
+        numberQRImageView.layer.cornerRadius = 32.5
         numberQRImageView.clipsToBounds = true
     }
     
@@ -120,7 +120,7 @@ class ViewController: UIViewController {
             tab04.isHidden = true
             tabbarImageView.image = UIImage(named: "tab_home_03")
             
-            downloadButton.isUserInteractionEnabled = false
+            downloadButton.isUserInteractionEnabled = true
             qrButton.isUserInteractionEnabled = true
             qrButton.backgroundColor = UIColor.color(rgb: 0xE60012)
             numberQRImageView.image = UIImage(named: "tab3_button_03")
@@ -194,7 +194,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTappedDownloadButton(_ sender: Any) {
-        self.statusHome = .qr2
+        if self.statusHome == .qr1 {
+            self.statusHome = .qr2
+        } else if self.statusHome == .qr2 {
+            self.statusHome = .qr1
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.configUI()
         }
