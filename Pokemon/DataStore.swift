@@ -10,6 +10,8 @@ class DataStore {
     static let shared = DataStore()
     var isComplete: Bool = false
     
+    var isLogin: Bool = false
+    
     var currentDevice: IPhoneScreenType = .other
     
     func isAfter9PMTomorrowInJapan() -> Bool {

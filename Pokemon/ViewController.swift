@@ -41,6 +41,9 @@ class ViewController: UIViewController {
     var activityIndicator: NVActivityIndicatorView!
     var isExpandHome2: Bool = false
     
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    
     @IBOutlet weak var tab2CollapseView: UIImageView!
     @IBOutlet weak var tab2ExpandView: UIScrollView!
     
@@ -52,8 +55,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.isValidView.isHidden = !DataStore.shared.isAfter9PMTomorrowInJapan()
-        self.isValidView.isHidden = true
+        self.isValidView.isHidden = DataStore.shared.isLogin
         self.statusHome = .home
         if DataStore.shared.isComplete {
             self.showLoadingView()
@@ -145,6 +147,28 @@ class ViewController: UIViewController {
             self.firstTab3ImageView.image = UIImage(named: "tab3_01")
         }
     }
+    
+    @IBAction func didTapeedLogin(_ sender: Any) {
+        let password = passwordTextField.text ?? ""
+            let isValid = checkPassword(password, validView: isValidView)
+
+            if isValid {
+                DataStore.shared.isLogin = true
+            } else {
+                DataStore.shared.isLogin = false
+            }
+    }
+    
+    func checkPassword(_ password: String, validView: UIView) -> Bool {
+        if password == "12345678" {
+            validView.isHidden = true
+            return true
+        } else {
+            validView.isHidden = false
+            return false
+        }
+    }
+    
     
     @IBAction func didTappedHomeButton(_ sender: Any) {
         self.statusHome = .home
