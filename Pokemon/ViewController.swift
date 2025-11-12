@@ -63,7 +63,7 @@ class ViewController: UIViewController {
         }
         self.configUI()
         self.numberQRImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        numberQRImageView.layer.cornerRadius = 30
+        numberQRImageView.layer.cornerRadius = 25
         numberQRImageView.clipsToBounds = true
     }
     
@@ -152,10 +152,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTappedHome2Button(_ sender: Any) {
+        self.isExpandHome2 = false
+        updateUIHome2()
         self.statusHome = .home2
         configUI()
     }
-    
     
     @IBAction func didTappedQrButton(_ sender: Any) {
         if DataStore.shared.isComplete {
@@ -175,13 +176,6 @@ class ViewController: UIViewController {
         if let url = URL(string: "https://auth.7id.omni7.jp/login-id/input?appid=bpc&userhash=GZKS74DFBQP6VCNTDWUWAER732PBZGPIV2AGS6I&ts=1762610319&tn=1762610319342GZKS74DFBQP6VCNTDWUWAER732PBZGPIV2AGS6I990&sig=2333f9b4d35c95909b17bfdb9827bee74a0a56de&ksappcd=03&ksappsitecd=0003&r_url=&utmparam=utm_campaign%3Diy_7mp%26utm_medium%3Dapp%26utm_source%3Dapp_iy") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
-        
-//        if DataStore.shared.isComplete {
-//        } else {
-//        }
-        self.statusHome = .home
-        configUI()
-        
     }
     
     @IBAction func didTappedExpandHome2Button(_ sender: Any) {
