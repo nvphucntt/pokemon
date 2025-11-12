@@ -201,7 +201,7 @@ class ViewController: UIViewController {
     
     @IBAction func didTappedDownloadButton(_ sender: Any) {
         self.statusHome = .qr2
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.configUI()
         }
     }

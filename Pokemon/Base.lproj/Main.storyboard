@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Svq-v1-3I5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Svq-v1-3I5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -266,7 +266,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yZ-5d-OeP">
-                                                        <rect key="frame" x="0.0" y="2860" width="414" height="2860"/>
+                                                        <rect key="frame" x="0.0" y="2860" width="414" height="3254"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab3_01" translatesAutoresizingMaskIntoConstraints="NO" id="2Ok-nn-cRW">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="475"/>
@@ -305,6 +305,13 @@
                                                                     <constraint firstAttribute="width" secondItem="za9-rb-bYw" secondAttribute="height" multiplier="414:475" id="0Yk-Rg-0VE"/>
                                                                 </constraints>
                                                             </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab3_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="S9Z-2K-8sp">
+                                                                <rect key="frame" x="0.0" y="2860" width="414" height="394"/>
+                                                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="S9Z-2K-8sp" secondAttribute="height" multiplier="414:394" id="Exb-7N-AlN"/>
+                                                                </constraints>
+                                                            </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
@@ -313,9 +320,10 @@
                                                             <constraint firstItem="jv2-nW-qhy" firstAttribute="leading" secondItem="9yZ-5d-OeP" secondAttribute="leading" id="Cha-86-w49"/>
                                                             <constraint firstItem="2Ok-nn-cRW" firstAttribute="top" secondItem="9yZ-5d-OeP" secondAttribute="top" id="CsP-5D-gKc"/>
                                                             <constraint firstItem="0af-Su-rX2" firstAttribute="leading" secondItem="9yZ-5d-OeP" secondAttribute="leading" id="FHb-Xn-INJ"/>
+                                                            <constraint firstItem="S9Z-2K-8sp" firstAttribute="leading" secondItem="9yZ-5d-OeP" secondAttribute="leading" id="FOd-25-59Y"/>
                                                             <constraint firstItem="2Ok-nn-cRW" firstAttribute="leading" secondItem="9yZ-5d-OeP" secondAttribute="leading" id="OOc-Aq-DZk"/>
-                                                            <constraint firstAttribute="bottom" secondItem="za9-rb-bYw" secondAttribute="bottom" id="RSS-pH-iN1"/>
                                                             <constraint firstItem="nbg-Oe-4Hp" firstAttribute="leading" secondItem="9yZ-5d-OeP" secondAttribute="leading" id="SLT-DQ-vAN"/>
+                                                            <constraint firstAttribute="bottom" secondItem="S9Z-2K-8sp" secondAttribute="bottom" id="SkT-XK-kTu"/>
                                                             <constraint firstAttribute="trailing" secondItem="3wU-ow-UEh" secondAttribute="trailing" id="TGP-dd-toK"/>
                                                             <constraint firstItem="3wU-ow-UEh" firstAttribute="top" secondItem="nbg-Oe-4Hp" secondAttribute="bottom" id="XnE-Qn-iQZ"/>
                                                             <constraint firstItem="0af-Su-rX2" firstAttribute="top" secondItem="3wU-ow-UEh" secondAttribute="bottom" id="ac7-yn-L5y"/>
@@ -325,6 +333,8 @@
                                                             <constraint firstAttribute="trailing" secondItem="nbg-Oe-4Hp" secondAttribute="trailing" id="nlg-lg-txO"/>
                                                             <constraint firstItem="3wU-ow-UEh" firstAttribute="leading" secondItem="9yZ-5d-OeP" secondAttribute="leading" id="pLv-RP-ENa"/>
                                                             <constraint firstItem="za9-rb-bYw" firstAttribute="top" secondItem="jv2-nW-qhy" secondAttribute="bottom" id="tfF-KH-Eb4"/>
+                                                            <constraint firstAttribute="trailing" secondItem="S9Z-2K-8sp" secondAttribute="trailing" id="u9R-RO-RPY"/>
+                                                            <constraint firstItem="S9Z-2K-8sp" firstAttribute="top" secondItem="za9-rb-bYw" secondAttribute="bottom" id="whC-7d-Txb"/>
                                                             <constraint firstAttribute="trailing" secondItem="2Ok-nn-cRW" secondAttribute="trailing" id="x3E-zn-q2V"/>
                                                             <constraint firstItem="jv2-nW-qhy" firstAttribute="top" secondItem="0af-Su-rX2" secondAttribute="bottom" id="yTc-ex-liS"/>
                                                         </constraints>
@@ -356,7 +366,7 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVX-mN-61l">
-                                                <rect key="frame" x="294" y="257" width="100" height="100"/>
+                                                <rect key="frame" x="294" y="-5292" width="100" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="Nf7-Wb-lvA"/>
                                                     <constraint firstAttribute="width" constant="100" id="nc4-IF-Th7"/>
@@ -403,7 +413,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="1yi-c8-z0x" secondAttribute="trailing" constant="96" id="Pg3-am-Hai"/>
                                                     <constraint firstItem="EgW-Yn-T6M" firstAttribute="centerY" secondItem="1yi-c8-z0x" secondAttribute="centerY" id="QF2-lm-J0N"/>
@@ -635,7 +645,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Svq-v1-3I5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="l8B-RY-WPu">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="96" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -659,8 +669,9 @@
         <image name="tab3_04" width="828" height="954"/>
         <image name="tab3_05" width="828" height="958"/>
         <image name="tab3_06" width="828" height="951"/>
+        <image name="tab3_bottom" width="828" height="787"/>
         <image name="tab3_button_01" width="828" height="164"/>
-        <image name="tab3_button_04" width="128" height="128"/>
+        <image name="tab3_button_04" width="126" height="127"/>
         <image name="tab3_header" width="828" height="474"/>
         <image name="tab4_01" width="828" height="1105"/>
         <image name="tab4_02" width="828" height="1105"/>
