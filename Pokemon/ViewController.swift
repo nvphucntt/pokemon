@@ -203,8 +203,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTappedHome4Button(_ sender: Any) {
-        DataStore.shared.update(isLogin: false)
-        DataStore.shared.removeLoginDate()
         self.statusHome = .home4
         configUI()
     }
