@@ -33,6 +33,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var firstTab3ImageView: UIImageView!
     
+    @IBOutlet weak var tab3ScrollView: UIScrollView!
+    
     @IBOutlet weak var isValidView: UIView!
     @IBOutlet weak var topLineView: UIView!
     
@@ -42,10 +44,13 @@ class ViewController: UIViewController {
     var isExpandHome2: Bool = false
     
     @IBOutlet weak var passwordTextField: UITextField!
-    
-    
     @IBOutlet weak var tab2CollapseView: UIImageView!
     @IBOutlet weak var tab2ExpandView: UIScrollView!
+    
+    @IBOutlet weak var constraintTab3FisrtTopTop: NSLayoutConstraint!
+    @IBOutlet weak var constraintTab3FirstTopBottom: NSLayoutConstraint!
+    
+    @IBOutlet weak var constraintTab3_02_topTop: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,25 +122,34 @@ class ViewController: UIViewController {
             tab03.isHidden = false
             tab04.isHidden = true
             tabbarImageView.image = UIImage(named: "tab_home_03")
+            constraintTab3FisrtTopTop.constant = 0
+            self.constraintTab3FirstTopBottom.constant = 0
+            self.firstTab3ImageView.isHidden = false
+            self.constraintTab3FirstTopBottom.priority = UILayoutPriority(1000)
+            self.constraintTab3_02_topTop.priority = UILayoutPriority(250)
             
             downloadButton.isUserInteractionEnabled = true
             qrButton.isUserInteractionEnabled = false
             qrButton.backgroundColor = UIColor.color(rgb: 0xD8D8D8)
             numberQRImageView.image = UIImage(named: "tab3_button_04")
-            self.firstTab3ImageView.image = UIImage(named: "tab3_01")
-            
+            self.firstTab3ImageView.image = UIImage(named: "tab3_first")
         case .qr2:
             tab01.isHidden = true
             tab02.isHidden = true
             tab03.isHidden = false
             tab04.isHidden = true
             tabbarImageView.image = UIImage(named: "tab_home_03")
+            self.constraintTab3FisrtTopTop.constant = -0.5
+            self.constraintTab3FirstTopBottom.constant = 0.5
+            self.firstTab3ImageView.isHidden = false
+            self.constraintTab3FirstTopBottom.priority = UILayoutPriority(1000)
+            self.constraintTab3_02_topTop.priority = UILayoutPriority(250)
             
             downloadButton.isUserInteractionEnabled = true
             qrButton.isUserInteractionEnabled = true
             qrButton.backgroundColor = UIColor.color(rgb: 0xE60012)
             numberQRImageView.image = UIImage(named: "tab3_button_03")
-            self.firstTab3ImageView.image = UIImage(named: "tab3_011")
+            self.firstTab3ImageView.image = UIImage(named: "tab3_first_downloaded")
         case .home4:
             tab01.isHidden = true
             tab02.isHidden = true
@@ -149,6 +163,9 @@ class ViewController: UIViewController {
             tab04.isHidden = true
             tabbarImageView.image = UIImage(named: "tab_home_03")
             
+            self.firstTab3ImageView.isHidden = true
+            self.constraintTab3FirstTopBottom.priority = UILayoutPriority(250)
+            self.constraintTab3_02_topTop.priority = UILayoutPriority(1000)
             downloadButton.isUserInteractionEnabled = true
             qrButton.isUserInteractionEnabled = false
             qrButton.backgroundColor = UIColor.color(rgb: 0xD8D8D8)
@@ -182,11 +199,13 @@ class ViewController: UIViewController {
     
     
     @IBAction func didTappedHomeButton(_ sender: Any) {
+        self.tab3ScrollView.setContentOffset(.zero, animated: false)
         self.statusHome = .home
         configUI()
     }
     
     @IBAction func didTappedHome2Button(_ sender: Any) {
+        self.tab3ScrollView.setContentOffset(.zero, animated: false)
         self.isExpandHome2 = false
         updateUIHome2()
         self.statusHome = .home2
@@ -203,6 +222,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTappedHome4Button(_ sender: Any) {
+        self.tab3ScrollView.setContentOffset(.zero, animated: false)
         self.statusHome = .home4
         configUI()
     }
@@ -257,6 +277,7 @@ class ViewController: UIViewController {
             
             let homeVC = HomeViewController()
             self.navigationController?.pushViewController(homeVC, animated: false)
+            self.tab3ScrollView.setContentOffset(.zero, animated: false)
         }
         
         let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { _ in
