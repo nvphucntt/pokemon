@@ -163,14 +163,14 @@ class ViewController: UIViewController {
             tab04.isHidden = true
             tabbarImageView.image = UIImage(named: "tab_home_03")
             
-            self.firstTab3ImageView.isHidden = true
-            self.constraintTab3FirstTopBottom.priority = UILayoutPriority(250)
-            self.constraintTab3_02_topTop.priority = UILayoutPriority(1000)
+//            self.firstTab3ImageView.isHidden = true
+//            self.constraintTab3FirstTopBottom.priority = UILayoutPriority(250)
+//            self.constraintTab3_02_topTop.priority = UILayoutPriority(1000)
             downloadButton.isUserInteractionEnabled = true
             qrButton.isUserInteractionEnabled = false
-            qrButton.backgroundColor = UIColor.color(rgb: 0xD8D8D8)
+            qrButton.backgroundColor = UIColor.color(rgb: 0xE60012)
             numberQRImageView.image = UIImage(named: "tab3_button_04")
-            self.firstTab3ImageView.image = UIImage(named: "tab3_01")
+            self.firstTab3ImageView.image = UIImage(named: "tab3_first_done")
         }
     }
     

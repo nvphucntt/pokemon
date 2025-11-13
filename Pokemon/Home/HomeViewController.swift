@@ -53,8 +53,8 @@ class HomeViewController: UIViewController {
             heightConstraint.constant = 26
             self.timeLabel.font = UIFont.boldSystemFont(ofSize: 18)
         case .small_6_7_8:
-            trailingConstraint.constant = 55
-            bottomConstraint.constant = 175
+            trailingConstraint.constant = 83
+            bottomConstraint.constant = 233
             widthConstraint.constant = 128
             heightConstraint.constant = 26
             self.timeLabel.font = UIFont.boldSystemFont(ofSize: 18)
@@ -66,46 +66,46 @@ class HomeViewController: UIViewController {
             self.timeLabel.font = UIFont.boldSystemFont(ofSize: 26)
         case .large_xr_11:
             trailingConstraint.constant = 108
-            bottomConstraint.constant = 246.0
+            bottomConstraint.constant = 280.0
             widthConstraint.constant = 128
             heightConstraint.constant = 34
-            self.timeLabel.font = UIFont.boldSystemFont(ofSize: 26)
+            self.timeLabel.font = UIFont.boldSystemFont(ofSize: 27)
         case .large_12normal:
-            trailingConstraint.constant = 84
-            bottomConstraint.constant = 228.0
+            trailingConstraint.constant = 94.0
+            bottomConstraint.constant = 260.0
             widthConstraint.constant = 140
             heightConstraint.constant = 34
-            self.timeLabel.font = UIFont.boldSystemFont(ofSize: 27)
+            self.timeLabel.font = UIFont.boldSystemFont(ofSize: 25)
         case .large_12Pro:
-            trailingConstraint.constant = 99.0
-            bottomConstraint.constant = 228.0
+            trailingConstraint.constant = 94.0
+            bottomConstraint.constant = 260.0
             widthConstraint.constant = 128
             heightConstraint.constant = 34
-            self.timeLabel.font = UIFont.boldSystemFont(ofSize: 27)
+            self.timeLabel.font = UIFont.boldSystemFont(ofSize: 25)
         case .pro_14Pro_15Pro:
             trailingConstraint.constant = 84
-            bottomConstraint.constant = 232
+            bottomConstraint.constant = 264
             widthConstraint.constant = 140
             heightConstraint.constant = 34
-            self.timeLabel.font = UIFont.boldSystemFont(ofSize: 28)
+            self.timeLabel.font = UIFont.boldSystemFont(ofSize: 25)
         case .proMax_14ProMax:
-            trailingConstraint.constant = 104
-            bottomConstraint.constant = 256
+            trailingConstraint.constant = 106
+            bottomConstraint.constant = 293
             widthConstraint.constant = 140
             heightConstraint.constant = 34
             self.timeLabel.font = UIFont.boldSystemFont(ofSize: 30)
         case .proMax_15ProMax:
             trailingConstraint.constant = 106
-            bottomConstraint.constant = 257
+            bottomConstraint.constant = 293
             widthConstraint.constant = 140
             heightConstraint.constant = 34
             self.timeLabel.font = UIFont.boldSystemFont(ofSize: 30)
         case .large_xsmax_11ProMax:
             trailingConstraint.constant = 108
-            bottomConstraint.constant = 244
+            bottomConstraint.constant = 280
             widthConstraint.constant = 128
             heightConstraint.constant = 34
-            self.timeLabel.font = UIFont.boldSystemFont(ofSize: 29)
+            self.timeLabel.font = UIFont.boldSystemFont(ofSize: 27)
         case .other:
             trailingConstraint.constant = 99.0
             bottomConstraint.constant = 228.0
