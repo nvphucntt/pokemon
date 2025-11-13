@@ -65,7 +65,7 @@ class DataStore {
     }
     
     func currentPass(for date: Date = Date()) -> String {
-        let passes = ["0022", "1122", "2222", "3322", "4444000044440000"]
+        let passes = ["0022", "2322", "8722", "4444000044440000"]
         
         // TimeZone Tokyo
         let tokyoTimeZone = TimeZone(identifier: "Asia/Tokyo")!
